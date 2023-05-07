@@ -29,3 +29,6 @@ body {
 .errorMessage{
   @apply text-lightRed font-light italic text-[10px]
 }
+.noResult{
+  @apply text-purple
+}
