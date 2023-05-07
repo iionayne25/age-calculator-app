@@ -18,11 +18,14 @@ body {
 }
 .inputText {
   @apply border-[1px] border-smokeyGrey/50 w-[90px] h-10 max-w-fit rounded-md font-extrabold px-2
-  placeholder:text-smokeyGrey/70  ;
+  placeholder:text-smokeyGrey/70   ;
 }
 .inputBox {
   @apply space-y-0.5;
 }
 .resultItems {
   @apply text-[60px] font-black italic w-full text-left ;
+}
+.errorMessage{
+  @apply text-lightRed font-light italic text-[10px]
 }
