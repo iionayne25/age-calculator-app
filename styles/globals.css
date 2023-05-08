@@ -24,11 +24,11 @@ body {
   @apply space-y-0.5;
 }
 .resultItems {
-  @apply text-[60px] font-black italic w-full text-left ;
+  @apply text-[50px] font-black italic w-full text-left  ;
 }
 .errorMessage{
   @apply text-lightRed font-light italic text-[10px]
 }
-.noResult{
+.resultNumber{
   @apply text-purple
 }
