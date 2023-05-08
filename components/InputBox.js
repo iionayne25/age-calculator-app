@@ -15,6 +15,8 @@ const InputBox = () => {
   });
   const [isLeapYear, setIsLeapYear] = useState();
   const [maxDate, setMaxDate] = useState(31);
+  const [errorType, setErrorType] = useState("");
+  
   const currentDate = new Date();
   const targetDate = new Date(parseInt(state.year),parseInt(state.month)-1,parseInt(state.day));
 
@@ -25,7 +27,7 @@ const InputBox = () => {
     diffInMonths = 12
   }
   const diffInYears = Math.abs(targetDate.getFullYear() - currentDate.getFullYear()) 
-  const [errorType, setErrorType] = useState("");
+
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
@@ -33,19 +35,6 @@ const InputBox = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
    setResultData({day : diffInDays, month: diffInMonths, year: diffInYears});
-    console.log(state);
-    console.log("target d/m/y" ,targetDate)
-    console.log("current day",currentDate.getDay());
-    console.log("current month",currentDate.getMonth());
-    console.log("current y",currentDate.getFullYear());
-    console.log("target d",targetDate.getDay());
-    console.log("target m",targetDate.getMonth());
-    console.log("target y",targetDate.getFullYear());
-    
-    console.log("diffInday:" ,diffInDays);
-    console.log("cdiffInmonth", diffInMonths)
-    console.log("diffInYear: ", diffInYears);
-    console.log(typeof(resultData.year))
   };
 
   return (
