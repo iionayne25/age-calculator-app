@@ -1,51 +1,46 @@
 import React, { useState } from "react";
-
 import BtnSubmit from "./BtnSubmit";
 import { data } from "autoprefixer";
-
+import Result from "./Result";
 const InputBox = () => {
- const [state,setState] =useState({
-  dayInput:"",
-  monthInput:"",
-  yearInput:"",
- })
- 
-const [apiData,setApiData] = useState([]);
-
-
+  const [state, setState] = useState({
+    day: "",
+    month: "",
+    year: "",
+  });
+  const [resultData, setResultData] = useState({
+    day:"",
+    month:"",
+    year:"",
+  });
   const [isLeapYear, setIsLeapYear] = useState();
   const [maxDate, setMaxDate] = useState(31);
-  const current = new Date();
-  const currentYear = `${current.getFullYear()}`;
   const [errorType, setErrorType] = useState("");
+  
+  const currentDate = new Date();
+  const targetDate = new Date(parseInt(state.year),parseInt(state.month)-1,parseInt(state.day));
 
-  const handleChange =(event)=> {
-    setState({...state,[event.target.name]:event.target.value})
+  const diffInMilliseconds = currentDate-targetDate;
+  const diffInDays = Math.floor(diffInMilliseconds/(1000*60*60*24))
+  let diffInMonths = (currentDate.getMonth()-1) -(targetDate.getMonth())+ (12*(currentDate.getFullYear() - targetDate.getFullYear()))
+  if(diffInMonths < 0){
+    diffInMonths = 12
   }
+  const diffInYears = Math.abs(targetDate.getFullYear() - currentDate.getFullYear()) 
 
-  const handleSubmit = async (event) => {
+
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.value });
+  };
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const endpoint = '/api/form';
-    const options = {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        day: `${event.target.day.value}`,
-        month:`${event.target.month.value}`,
-        year: `${event.target.year.value}`})
-    };
-    const response = await fetch(endpoint, options);
-    const result = await response.json();
-    setApiData(result)
-    console.log(`Is this your data : ${result.day} ${result.month} ${result.year}`);
+   setResultData({day : diffInDays, month: diffInMonths, year: diffInYears});
   };
 
-console.log("apiData:",apiData)
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="space-y-5" >
+    <div className="space-y-8">
+      <form onSubmit={handleSubmit}>
+        <div className="flex flex-col gap-6">
         <div className="grid grid-cols-3 gap-4 px-6 ">
           <div className="inputBox">
             <label htmlFor="day" className="label">
@@ -59,11 +54,9 @@ console.log("apiData:",apiData)
               minLength="1"
               maxLength="2"
               placeholder="DD"
-              defaultValue=""
               onChange={handleChange}
               className="inputText focus:border-invert focus:border-[#4E328D] focus:outline-none"
             ></input>
-            
           </div>
           <div className="inputBox">
             <label htmlFor="day" className="label">
@@ -76,11 +69,9 @@ console.log("apiData:",apiData)
               maxLength={2}
               name="month"
               placeholder="MM"
-              defaultValue=""
               onChange={handleChange}
               className="inputText "
             ></input>
-           
           </div>
           <div className="inputBox">
             <label htmlFor="day" className="label">
@@ -93,15 +84,17 @@ console.log("apiData:",apiData)
               maxLength={4}
               name="year"
               placeholder="YYYY"
-              required
-              defaultValue=""
               onChange={handleChange}
               className="inputText "
             ></input>
           </div>
         </div>
-      <BtnSubmit/>
+        <BtnSubmit />
+        </div>
+        
+      
       </form>
+      <Result data={resultData} />
     </div>
   );
 };
