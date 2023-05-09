@@ -12,23 +12,28 @@ body {
 .main {
   @apply mx-2 min-h-screen;
 }
-
 .label {
   @apply block text-[12px] font-bold text-smokeyGrey tracking-[2px];
 }
 .inputText {
   @apply border-[1px] border-smokeyGrey/50 w-[90px] h-10 max-w-fit rounded-md font-extrabold px-2
-  placeholder:text-smokeyGrey/70   ;
+  placeholder:text-smokeyGrey/70;
 }
 .inputBox {
   @apply space-y-0.5;
 }
 .resultItems {
-  @apply text-[50px] font-black italic w-full text-left  ;
+  @apply text-[50px] font-black italic w-full text-left;
 }
-.errorMessage{
-  @apply text-lightRed font-light italic text-[10px]
+.error {
+  @apply text-lightRed font-light italic text-[10px];
 }
-.resultNumber{
-  @apply text-purple
+.result {
+  @apply text-purple;
+}
+.error-label {
+  @apply text-lightRed;
+}
+.error-input {
+  @apply border border-lightRed;
 }
