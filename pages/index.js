@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Form from "@/components/Form";
 import InputBox from "@/components/InputBox";
 export default function Home({data}) {
 

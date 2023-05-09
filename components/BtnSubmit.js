@@ -9,6 +9,7 @@ const Divider = () => {
         <div className="bg-purple rounded-full w-12 h-12 flex justify-center relative hover:bg-offBlack ">
           <Image
             src="/icon-arrow.svg"
+            alt="arrow picutre for button"
             width={20}
             height={20}
             className="self-center rounded-full"

@@ -10,7 +10,6 @@ export default function handler(req, res) {
       .status(400)
       .json({ day: "", month: "", year: "" });
   }
- 
   const result = { day: day, month: month, year: year};
   res.status(200).json(result);
  console.log(result)
