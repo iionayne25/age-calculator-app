@@ -29,7 +29,7 @@ This is a solution to the [Age calculator app challenge on Frontend Mentor](http
 ### Links
 
 - Solution URL: [Github](https://github.com/iionayne25/age-calculator-app)
-- Live Site URL: [Vercel](https://your-live-site-url.com)
+- Live Site URL: [Vercel](https://age-calculator-app-jade.vercel.app/)
 
 ## My process
 
