@@ -34,7 +34,7 @@ const InputBox = () => {
     targetDate.getMonth() +
     12 * (currentDate.getFullYear() - targetDate.getFullYear());
   if (diffInMonths < 0) {
-    diffInMonths = 12;
+    diffInMonths += 1;
   }
   const diffInYears = Math.abs(
     targetDate.getFullYear() - currentDate.getFullYear()
@@ -57,8 +57,15 @@ const InputBox = () => {
   const validateInput = (errors) => {
     if (!state.day) {
       errors.day = "This field is rquired";
-    } else if (state.day > 31 || state.day === "00") {
+    } else if (state.day > 31 && state.month === "" || state.day ==="00" ) {
       errors.day = "Must be a valid day";
+    }else if(state.day  && state.month){
+      const numberOfDays = getNumberOfDaysInMonth(
+        parseInt(state.month),
+        parseInt(state.year)
+      );
+      if (parseInt(state.day) > numberOfDays) {
+        errors.day = "Must be a valid date";}
     }
     if (!state.month) {
       errors.month = "This field is rquired";
@@ -73,20 +80,11 @@ const InputBox = () => {
     ) {
       errors.year = "Must be a valid year";
     }
-    if (state.month && state.day && state.year) {
-      const numberOfDays = getNumberOfDaysInMonth(
-        parseInt(state.month),
-        parseInt(state.year)
-      );
-      if (parseInt(state.day) > numberOfDays) {
-        errors.day = "Must be a valid date";
-      }
-    }
     if (Object.keys(errors).length === 0) {
       setResultData({
-        day: diffInDays,
-        month: diffInMonths,
-        year: diffInYears,
+        day: diffInDays === 0?"0":diffInDays,
+        month: diffInMonths === 0?"0":diffInMonths,
+        year: diffInYears === 0? "0" :diffInYears,
       });
       setFormErrors("");
     } else {
@@ -95,11 +93,11 @@ const InputBox = () => {
     }
   };
   return (
-    <div className="space-y-0">
+    <div className="xl:w-full flex flex-col gap-3">
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-6">
-          <div className="grid grid-cols-3 gap-4 px-6 ">
-            <div className="inputBox">
+        <div className="flex flex-col gap-6 xl:gap-0 xl:pt-0 ">
+          <div className="grid grid-cols-3 gap-4 px-4 xl:px-8 xl:w-fit  ">
+            <div className="inputBox ">
               <label
                 htmlFor="day"
                 className={`label ${formErrors.day ? "error-label" : ""}`}

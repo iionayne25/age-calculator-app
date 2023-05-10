@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
 
 body {
   font-family: "Poppins", sans-serif;
@@ -10,26 +10,30 @@ body {
 }
 
 .main {
-  @apply mx-2 min-h-screen;
+  @apply mx-2 min-h-screen font-poppins;
 }
 .label {
-  @apply block text-[12px] font-bold text-smokeyGrey tracking-[2px];
+  @apply block text-[12px] font-extrabold text-smokeyGrey tracking-[2px] xl:tracking-[3px];
 }
 .inputText {
-  @apply border-[1px] border-smokeyGrey/50 w-[90px] h-10 max-w-fit rounded-md font-extrabold px-2
-  placeholder:text-smokeyGrey/70;
+  @apply border-[1px] text-[18px]  border-smokeyGrey/50 w-[80px] h-10 max-w-fit rounded-md font-extrabold px-2
+  placeholder:text-smokeyGrey/70 placeholder:text-[18px] xl:text-[26px]
+  xl:w-[130px] xl:h-11 xl:placeholder:text-xl xl:placeholder:items-center;
 }
 .inputBox {
-  @apply space-y-0.5;
+  @apply space-y-0.5 ;
 }
 .resultItems {
-  @apply text-[50px] font-black italic w-full text-left;
+  @apply   font-black italic w-full text-left xl:text-[80px];
 }
 .error {
   @apply text-lightRed font-light italic text-[10px];
 }
 .result {
-  @apply text-purple;
+  @apply text-purple text-[40px] xl:text-[70px];
+}
+.noResult{
+@apply text-purple text-[45px] xl:text-[80px]
 }
 .error-label {
   @apply text-lightRed;
