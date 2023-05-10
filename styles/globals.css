@@ -24,16 +24,16 @@ body {
   @apply space-y-0.5 ;
 }
 .resultItems {
-  @apply text-[50px] font-black italic w-full text-left xl:text-[80px];
+  @apply   font-black italic w-full text-left xl:text-[80px];
 }
 .error {
   @apply text-lightRed font-light italic text-[10px];
 }
 .result {
-  @apply text-purple xl:text-[70px];
+  @apply text-purple text-[40px] xl:text-[70px];
 }
 .noResult{
-@apply text-purple text-[80px] xl:text-[80px]
+@apply text-purple text-[45px] xl:text-[80px]
 }
 .error-label {
   @apply text-lightRed;
