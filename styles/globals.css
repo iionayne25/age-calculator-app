@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap");
 
 body {
   font-family: "Poppins", sans-serif;
@@ -21,10 +21,10 @@ body {
   xl:w-[130px] xl:h-11 xl:placeholder:text-xl xl:placeholder:items-center;
 }
 .inputBox {
-  @apply space-y-0.5 ;
+  @apply space-y-0.5;
 }
 .resultItems {
-  @apply   font-black italic w-full text-left xl:text-[80px];
+  @apply font-black italic w-full text-left xl:text-[80px];
 }
 .error {
   @apply text-lightRed font-light italic text-[10px];
@@ -32,8 +32,8 @@ body {
 .result {
   @apply text-purple text-[40px] xl:text-[70px];
 }
-.noResult{
-@apply text-purple text-[45px] xl:text-[80px]
+.noResult {
+  @apply text-purple text-[45px] xl:text-[80px];
 }
 .error-label {
   @apply text-lightRed;

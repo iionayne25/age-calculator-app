@@ -57,15 +57,16 @@ const InputBox = () => {
   const validateInput = (errors) => {
     if (!state.day) {
       errors.day = "This field is rquired";
-    } else if (state.day > 31 && state.month === "" || state.day ==="00" ) {
+    } else if ((state.day > 31 && state.month === "") || state.day === "00") {
       errors.day = "Must be a valid day";
-    }else if(state.day  && state.month){
+    } else if (state.day && state.month) {
       const numberOfDays = getNumberOfDaysInMonth(
         parseInt(state.month),
         parseInt(state.year)
       );
       if (parseInt(state.day) > numberOfDays) {
-        errors.day = "Must be a valid date";}
+        errors.day = "Must be a valid date";
+      }
     }
     if (!state.month) {
       errors.month = "This field is rquired";
@@ -82,9 +83,9 @@ const InputBox = () => {
     }
     if (Object.keys(errors).length === 0) {
       setResultData({
-        day: diffInDays === 0?"0":diffInDays,
-        month: diffInMonths === 0?"0":diffInMonths,
-        year: diffInYears === 0? "0" :diffInYears,
+        day: diffInDays === 0 ? "0" : diffInDays,
+        month: diffInMonths === 0 ? "0" : diffInMonths,
+        year: diffInYears === 0 ? "0" : diffInYears,
       });
       setFormErrors("");
     } else {
@@ -93,7 +94,7 @@ const InputBox = () => {
     }
   };
   return (
-    <div className="xl:w-full flex flex-col gap-3">
+    <main className="xl:w-full flex flex-col gap-3">
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-6 xl:gap-0 xl:pt-0 ">
           <div className="grid grid-cols-3 gap-4 px-4 xl:px-8 xl:w-fit  ">
@@ -167,7 +168,7 @@ const InputBox = () => {
         </div>
       </form>
       <Result data={resultData} />
-    </div>
+    </main>
   );
 };
 
